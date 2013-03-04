@@ -1,0 +1,7 @@
+*.cache
+/Sources/TestResults/Серик-Жулдыз_SERIKZHULDYZ 2013-02-24 19_55_01/Out/*.dat
+*.dat
+*.exe
+*.tlog
+*.trx
+*.txt

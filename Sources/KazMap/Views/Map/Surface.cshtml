@@ -1,0 +1,146 @@
+﻿@{
+    ViewBag.Title = "Surface";
+}
+
+<script type="text/javascript" src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<script type="text/javascript">
+    var map;
+    var layerMarkers;
+    var lineLayer;
+    function GetMap() {
+        var options = {
+            projection: new OpenLayers.Projection("EPSG:900913"),
+            displayProjection: new OpenLayers.Projection("EPSG:4326"),
+        };
+        map = new OpenLayers.Map("OSMap", options); //инициализация карты
+        var mapnik = new OpenLayers.Layer.OSM(); //создание слоя карты
+        map.addLayer(mapnik); //добавление слоя
+        //if (latitude == null) latitude = 49.788621;
+        //if (longitude == null) longitude = 73.136222;
+        // масштаб = 15
+        map.setCenter(getLonLat(73.136222, 49.788621), 15);     
+        layerMarkers = new OpenLayers.Layer.Markers("Markers"); //создаем новый слой маркеров
+        map.addLayer(layerMarkers); //добавляем этот слой к карте
+        lineLayer = new OpenLayers.Layer.Vector("Line Layer");
+        map.addLayer(lineLayer);
+        map.addControl(new OpenLayers.Control.DrawFeature(lineLayer, OpenLayers.Handler.Path));
+
+        map.events.register('click', map, function (e) {
+            //var size = new OpenLayers.Size(21, 25); //размер картинки для маркера
+            //var offset = new OpenLayers.Pixel(-(size.w / 2), -size.h); //смещение картинки для маркера
+            //drawMarker(map.getLonLatFromViewPortPx(e.xy),
+            //    new OpenLayers.Icon('/Images/smilies.png', size, offset));
+            var lonLat2 = map.getLonLatFromViewPortPx(e.xy).transform(map.projection, map.displayProjection);
+            updateRoute(0,lonLat2);
+
+        }); //добавление событие клика по карте
+        map.events.register("move", map, function () {
+            //update();
+        });
+    }
+    
+    function update() {
+        var bounds = map.getExtent().transform(map.projection, map.displayProjection);
+        var surfaceUrl = '@Url.Action("Surface", "MapJson", new { @area="" })';
+        $.ajax({
+            url: surfaceUrl,
+            dataType: 'json',
+            data: {
+                left: bounds.left,
+                right: bounds.right,
+                top: bounds.top,
+                bottom: bounds.bottom
+            },
+            success: function (result) {
+                draw(result);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    }
+
+    function updateRoute(start, end) {
+        var routingUrl = '@Url.Action("Route", "RoutingJson", new { @area="" })';
+        $.ajax({
+            url: routingUrl,
+            dataType: 'json',
+            data: {
+                startId: start,
+                longitude2: end.lon,
+                latitude2: end.lat,
+            },
+            success: function (result) {
+                drawRoute(result);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    }
+
+    function draw(result) {
+        layerMarkers.clearMarkers();
+
+        for (var i = 0; i < result.length; i++) {
+            var node = result[i];
+            var lonLat = getLonLat(node.Longitude, node.Latitude);
+            var size = new OpenLayers.Size(5, 5); //размер картинки для маркера
+            var offset = new OpenLayers.Pixel(-(size.w / 2), -size.h); //смещение картинки для маркера
+            drawMarker(lonLat, new OpenLayers.Icon('/Images/smilies.png', size, offset));
+        }
+    }
+
+    function drawRoute(result) {
+        lineLayer.removeAllFeatures();
+
+        for (var i = 0; i < result.length; i++) {
+            var node = result[i];
+            var longitude1 = node.Longitude1;
+            var latitude1 = node.Latitude1;
+            var longitude2 = node.Longitude2;
+            var latitude2 = node.Latitude2;            
+            drawLine(longitude1, latitude1, longitude2, latitude2);
+        }
+    }
+
+    function drawLine(longitude1, latitude1, longitude2, latitude2) {
+        var points = new Array(
+            new OpenLayers.Geometry.Point(longitude1, latitude1),
+            new OpenLayers.Geometry.Point(longitude2, latitude2)
+        );
+        var line = new OpenLayers.Geometry.LineString(points)
+            .transform(
+            new OpenLayers.Projection("EPSG:4326"), // преобразование в WGS 1984
+            new OpenLayers.Projection("EPSG:900913") // преобразование проекции
+        );
+        var style = { 
+            strokeColor: '#0000ff', 
+            strokeOpacity: 0.5,
+            strokeWidth: 5
+        };
+        var lineFeature = new OpenLayers.Feature.Vector(line, null, style);
+        lineLayer.addFeatures([lineFeature]);
+    } 
+
+    function drawMarker(lonLat, icon) {
+        layerMarkers.addMarker(new OpenLayers.Marker(lonLat, icon));
+    }
+
+    function getLonLat(longitude, latitude) {
+        return new OpenLayers.LonLat(longitude, latitude) //(широта, долгота)
+          .transform(
+            new OpenLayers.Projection("EPSG:4326"), // преобразование в WGS 1984
+            new OpenLayers.Projection("EPSG:900913") // преобразование проекции
+          );
+    }
+
+    $(document).ready(function () {
+        GetMap();
+    });
+</script>
+
+<h2>Surface</h2>
+<div id="OSMap" style="width:100%; height:400px;"></div>

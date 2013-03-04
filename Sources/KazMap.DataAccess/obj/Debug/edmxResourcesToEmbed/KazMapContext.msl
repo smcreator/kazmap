@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KazMapDataAccessStoreContainer" CdmEntityContainer="KazMapConnection">
+    <EntitySetMapping Name="Intersections">
+      <EntityTypeMapping TypeName="KazMap.DataAccess.Intersections">
+        <MappingFragment StoreEntitySet="Intersections">
+          <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nodes">
+      <EntityTypeMapping TypeName="KazMap.DataAccess.Nodes">
+        <MappingFragment StoreEntitySet="Nodes">
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NodeTags">
+      <EntityTypeMapping TypeName="KazMap.DataAccess.NodeTags">
+        <MappingFragment StoreEntitySet="NodeTags">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Path">
+      <EntityTypeMapping TypeName="KazMap.DataAccess.Path">
+        <MappingFragment StoreEntitySet="Path">
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="RightNodeId" ColumnName="RightNodeId" />
+          <ScalarProperty Name="LeftNodeId" ColumnName="LeftNodeId" />
+          <ScalarProperty Name="RoadId" ColumnName="RoadId" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="RightId" ColumnName="RightId" />
+          <ScalarProperty Name="LeftId" ColumnName="LeftId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RelationNodes">
+      <EntityTypeMapping TypeName="KazMap.DataAccess.RelationNodes">
+        <MappingFragment StoreEntitySet="RelationNodes">
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="RelationId" ColumnName="RelationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Relations">
+      <EntityTypeMapping TypeName="KazMap.DataAccess.Relations">
+        <MappingFragment StoreEntitySet="Relations">
+          <ScalarProperty Name="RelationId" ColumnName="RelationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RelationTags">
+      <EntityTypeMapping TypeName="KazMap.DataAccess.RelationTags">
+        <MappingFragment StoreEntitySet="RelationTags">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="RelationId" ColumnName="RelationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roads">
+      <EntityTypeMapping TypeName="KazMap.DataAccess.Roads">
+        <MappingFragment StoreEntitySet="Roads">
+          <ScalarProperty Name="MaxSpeed" ColumnName="MaxSpeed" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="WayId" ColumnName="WayId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagTypes">
+      <EntityTypeMapping TypeName="KazMap.DataAccess.TagTypes">
+        <MappingFragment StoreEntitySet="TagTypes">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WayNodes">
+      <EntityTypeMapping TypeName="KazMap.DataAccess.WayNodes">
+        <MappingFragment StoreEntitySet="WayNodes">
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+          <ScalarProperty Name="WayId" ColumnName="WayId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ways">
+      <EntityTypeMapping TypeName="KazMap.DataAccess.Ways">
+        <MappingFragment StoreEntitySet="Ways">
+          <ScalarProperty Name="WayId" ColumnName="WayId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WayTags">
+      <EntityTypeMapping TypeName="KazMap.DataAccess.WayTags">
+        <MappingFragment StoreEntitySet="WayTags">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="WayId" ColumnName="WayId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
