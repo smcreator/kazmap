@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KazMapContext.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="KazMapContextStoreContainer">
+    <EntitySet Name="Intersections" EntityType="KazMapContext.Store.Intersections" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Nodes" EntityType="KazMapContext.Store.Nodes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NodeTags" EntityType="KazMapContext.Store.NodeTags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Path" EntityType="KazMapContext.Store.Path" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RelationNodes" EntityType="KazMapContext.Store.RelationNodes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Relations" EntityType="KazMapContext.Store.Relations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RelationTags" EntityType="KazMapContext.Store.RelationTags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roads" EntityType="KazMapContext.Store.Roads" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TagTypes" EntityType="KazMapContext.Store.TagTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WayNames" EntityType="KazMapContext.Store.WayNames" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WayNamesReferences" EntityType="KazMapContext.Store.WayNamesReferences" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WayNodes" EntityType="KazMapContext.Store.WayNodes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ways" EntityType="KazMapContext.Store.Ways" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WayTags" EntityType="KazMapContext.Store.WayTags" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Intersections_NodeId_Nodes" Association="KazMapContext.Store.FK_Intersections_NodeId_Nodes">
+      <End Role="Nodes" EntitySet="Nodes" />
+      <End Role="Intersections" EntitySet="Intersections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NodeTags_NodeId_Nodes" Association="KazMapContext.Store.FK_NodeTags_NodeId_Nodes">
+      <End Role="Nodes" EntitySet="Nodes" />
+      <End Role="NodeTags" EntitySet="NodeTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NodeTags_TypeId_TagTypes" Association="KazMapContext.Store.FK_NodeTags_TypeId_TagTypes">
+      <End Role="TagTypes" EntitySet="TagTypes" />
+      <End Role="NodeTags" EntitySet="NodeTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Path_LeftIntersectionId_Intersections" Association="KazMapContext.Store.FK_Path_LeftIntersectionId_Intersections">
+      <End Role="Intersections" EntitySet="Intersections" />
+      <End Role="Path" EntitySet="Path" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Path_LeftNodeId_Nodes" Association="KazMapContext.Store.FK_Path_LeftNodeId_Nodes">
+      <End Role="Nodes" EntitySet="Nodes" />
+      <End Role="Path" EntitySet="Path" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Path_RightIntersectionId_Intersections" Association="KazMapContext.Store.FK_Path_RightIntersectionId_Intersections">
+      <End Role="Intersections" EntitySet="Intersections" />
+      <End Role="Path" EntitySet="Path" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Path_RightNodeId_Nodes" Association="KazMapContext.Store.FK_Path_RightNodeId_Nodes">
+      <End Role="Nodes" EntitySet="Nodes" />
+      <End Role="Path" EntitySet="Path" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Path_RoadId_Roads" Association="KazMapContext.Store.FK_Path_RoadId_Roads">
+      <End Role="Roads" EntitySet="Roads" />
+      <End Role="Path" EntitySet="Path" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelationNodes_RelationId_Relations" Association="KazMapContext.Store.FK_RelationNodes_RelationId_Relations">
+      <End Role="Relations" EntitySet="Relations" />
+      <End Role="RelationNodes" EntitySet="RelationNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelationNodes_TypeId_TagTypes" Association="KazMapContext.Store.FK_RelationNodes_TypeId_TagTypes">
+      <End Role="TagTypes" EntitySet="TagTypes" />
+      <End Role="RelationNodes" EntitySet="RelationNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelationTags_RelationId_Relations" Association="KazMapContext.Store.FK_RelationTags_RelationId_Relations">
+      <End Role="Relations" EntitySet="Relations" />
+      <End Role="RelationTags" EntitySet="RelationTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelationTags_TypeId_TagTypes" Association="KazMapContext.Store.FK_RelationTags_TypeId_TagTypes">
+      <End Role="TagTypes" EntitySet="TagTypes" />
+      <End Role="RelationTags" EntitySet="RelationTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roads_WayId_Ways" Association="KazMapContext.Store.FK_Roads_WayId_Ways">
+      <End Role="Ways" EntitySet="Ways" />
+      <End Role="Roads" EntitySet="Roads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WayNamesReferences_NameId_WayNames" Association="KazMapContext.Store.FK_WayNamesReferences_NameId_WayNames">
+      <End Role="WayNames" EntitySet="WayNames" />
+      <End Role="WayNamesReferences" EntitySet="WayNamesReferences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WayNamesReferences_WayId_Ways" Association="KazMapContext.Store.FK_WayNamesReferences_WayId_Ways">
+      <End Role="Ways" EntitySet="Ways" />
+      <End Role="WayNamesReferences" EntitySet="WayNamesReferences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WayNodes_NodeId_Nodes" Association="KazMapContext.Store.FK_WayNodes_NodeId_Nodes">
+      <End Role="Nodes" EntitySet="Nodes" />
+      <End Role="WayNodes" EntitySet="WayNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WayNodes_WayId_Ways" Association="KazMapContext.Store.FK_WayNodes_WayId_Ways">
+      <End Role="Ways" EntitySet="Ways" />
+      <End Role="WayNodes" EntitySet="WayNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WayTags_TypeId_TagTypes" Association="KazMapContext.Store.FK_WayTags_TypeId_TagTypes">
+      <End Role="TagTypes" EntitySet="TagTypes" />
+      <End Role="WayTags" EntitySet="WayTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WayTags_WayId_Ways" Association="KazMapContext.Store.FK_WayTags_WayId_Ways">
+      <End Role="Ways" EntitySet="Ways" />
+      <End Role="WayTags" EntitySet="WayTags" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Intersections">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="AverageSpeed" Type="float" />
+    <Property Name="NodeId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Nodes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Longitude" Type="float" />
+    <Property Name="Latitude" Type="float" />
+  </EntityType>
+  <EntityType Name="NodeTags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="varchar" MaxLength="100" />
+    <Property Name="TypeId" Type="bigint" />
+    <Property Name="NodeId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Path">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Weight" Type="int" />
+    <Property Name="Distance" Type="bigint" />
+    <Property Name="RoadId" Type="bigint" />
+    <Property Name="LeftIntersectionId" Type="bigint" />
+    <Property Name="RightIntersectionId" Type="bigint" />
+    <Property Name="LeftNodeId" Type="bigint" />
+    <Property Name="RightNodeId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="RelationNodes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ItemId" Type="bigint" />
+    <Property Name="Position" Type="int" />
+    <Property Name="TypeId" Type="bigint" />
+    <Property Name="RelationId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Relations">
+    <Key>
+      <PropertyRef Name="RelationId" />
+    </Key>
+    <Property Name="RelationId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RelationTags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="varchar" MaxLength="100" />
+    <Property Name="TypeId" Type="bigint" />
+    <Property Name="RelationId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Roads">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="varchar" MaxLength="50" />
+    <Property Name="MaxSpeed" Type="int" />
+    <Property Name="WayId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="TagTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="WayNames">
+    <Key>
+      <PropertyRef Name="NameId" />
+    </Key>
+    <Property Name="NameId" Type="bigint" Nullable="false" />
+    <Property Name="Value" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="WayNamesReferences">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="WayId" Type="bigint" />
+    <Property Name="NameId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="WayNodes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Position" Type="int" />
+    <Property Name="NodeId" Type="bigint" />
+    <Property Name="WayId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Ways">
+    <Key>
+      <PropertyRef Name="WayId" />
+    </Key>
+    <Property Name="WayId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WayTags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="varchar" MaxLength="100" />
+    <Property Name="TypeId" Type="bigint" />
+    <Property Name="WayId" Type="bigint" />
+  </EntityType>
+  <Association Name="FK_Intersections_NodeId_Nodes">
+    <End Role="Nodes" Type="KazMapContext.Store.Nodes" Multiplicity="0..1" />
+    <End Role="Intersections" Type="KazMapContext.Store.Intersections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Intersections">
+        <PropertyRef Name="NodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NodeTags_NodeId_Nodes">
+    <End Role="Nodes" Type="KazMapContext.Store.Nodes" Multiplicity="0..1" />
+    <End Role="NodeTags" Type="KazMapContext.Store.NodeTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NodeTags">
+        <PropertyRef Name="NodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NodeTags_TypeId_TagTypes">
+    <End Role="TagTypes" Type="KazMapContext.Store.TagTypes" Multiplicity="0..1" />
+    <End Role="NodeTags" Type="KazMapContext.Store.NodeTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TagTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NodeTags">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Path_LeftIntersectionId_Intersections">
+    <End Role="Intersections" Type="KazMapContext.Store.Intersections" Multiplicity="0..1" />
+    <End Role="Path" Type="KazMapContext.Store.Path" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Intersections">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Path">
+        <PropertyRef Name="LeftIntersectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Path_LeftNodeId_Nodes">
+    <End Role="Nodes" Type="KazMapContext.Store.Nodes" Multiplicity="0..1" />
+    <End Role="Path" Type="KazMapContext.Store.Path" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Path">
+        <PropertyRef Name="LeftNodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Path_RightIntersectionId_Intersections">
+    <End Role="Intersections" Type="KazMapContext.Store.Intersections" Multiplicity="0..1" />
+    <End Role="Path" Type="KazMapContext.Store.Path" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Intersections">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Path">
+        <PropertyRef Name="RightIntersectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Path_RightNodeId_Nodes">
+    <End Role="Nodes" Type="KazMapContext.Store.Nodes" Multiplicity="0..1" />
+    <End Role="Path" Type="KazMapContext.Store.Path" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Path">
+        <PropertyRef Name="RightNodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Path_RoadId_Roads">
+    <End Role="Roads" Type="KazMapContext.Store.Roads" Multiplicity="0..1" />
+    <End Role="Path" Type="KazMapContext.Store.Path" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roads">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Path">
+        <PropertyRef Name="RoadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelationNodes_RelationId_Relations">
+    <End Role="Relations" Type="KazMapContext.Store.Relations" Multiplicity="0..1" />
+    <End Role="RelationNodes" Type="KazMapContext.Store.RelationNodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Relations">
+        <PropertyRef Name="RelationId" />
+      </Principal>
+      <Dependent Role="RelationNodes">
+        <PropertyRef Name="RelationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelationNodes_TypeId_TagTypes">
+    <End Role="TagTypes" Type="KazMapContext.Store.TagTypes" Multiplicity="0..1" />
+    <End Role="RelationNodes" Type="KazMapContext.Store.RelationNodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TagTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RelationNodes">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelationTags_RelationId_Relations">
+    <End Role="Relations" Type="KazMapContext.Store.Relations" Multiplicity="0..1" />
+    <End Role="RelationTags" Type="KazMapContext.Store.RelationTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Relations">
+        <PropertyRef Name="RelationId" />
+      </Principal>
+      <Dependent Role="RelationTags">
+        <PropertyRef Name="RelationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelationTags_TypeId_TagTypes">
+    <End Role="TagTypes" Type="KazMapContext.Store.TagTypes" Multiplicity="0..1" />
+    <End Role="RelationTags" Type="KazMapContext.Store.RelationTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TagTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RelationTags">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roads_WayId_Ways">
+    <End Role="Ways" Type="KazMapContext.Store.Ways" Multiplicity="0..1" />
+    <End Role="Roads" Type="KazMapContext.Store.Roads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ways">
+        <PropertyRef Name="WayId" />
+      </Principal>
+      <Dependent Role="Roads">
+        <PropertyRef Name="WayId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WayNamesReferences_NameId_WayNames">
+    <End Role="WayNames" Type="KazMapContext.Store.WayNames" Multiplicity="0..1" />
+    <End Role="WayNamesReferences" Type="KazMapContext.Store.WayNamesReferences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WayNames">
+        <PropertyRef Name="NameId" />
+      </Principal>
+      <Dependent Role="WayNamesReferences">
+        <PropertyRef Name="NameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WayNamesReferences_WayId_Ways">
+    <End Role="Ways" Type="KazMapContext.Store.Ways" Multiplicity="0..1" />
+    <End Role="WayNamesReferences" Type="KazMapContext.Store.WayNamesReferences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ways">
+        <PropertyRef Name="WayId" />
+      </Principal>
+      <Dependent Role="WayNamesReferences">
+        <PropertyRef Name="WayId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WayNodes_NodeId_Nodes">
+    <End Role="Nodes" Type="KazMapContext.Store.Nodes" Multiplicity="0..1" />
+    <End Role="WayNodes" Type="KazMapContext.Store.WayNodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WayNodes">
+        <PropertyRef Name="NodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WayNodes_WayId_Ways">
+    <End Role="Ways" Type="KazMapContext.Store.Ways" Multiplicity="0..1" />
+    <End Role="WayNodes" Type="KazMapContext.Store.WayNodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ways">
+        <PropertyRef Name="WayId" />
+      </Principal>
+      <Dependent Role="WayNodes">
+        <PropertyRef Name="WayId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WayTags_TypeId_TagTypes">
+    <End Role="TagTypes" Type="KazMapContext.Store.TagTypes" Multiplicity="0..1" />
+    <End Role="WayTags" Type="KazMapContext.Store.WayTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TagTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WayTags">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WayTags_WayId_Ways">
+    <End Role="Ways" Type="KazMapContext.Store.Ways" Multiplicity="0..1" />
+    <End Role="WayTags" Type="KazMapContext.Store.WayTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ways">
+        <PropertyRef Name="WayId" />
+      </Principal>
+      <Dependent Role="WayTags">
+        <PropertyRef Name="WayId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
